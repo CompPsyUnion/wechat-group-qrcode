@@ -1,0 +1,8 @@
+environments:
+  - name: staging
+    description: staging环境发布
+  - name: production
+    description: 生产环境发布
+    require:
+      - environmentName: staging
+        after: 60

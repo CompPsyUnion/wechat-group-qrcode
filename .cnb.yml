@@ -1,0 +1,80 @@
+$:
+  vscode:
+    - docker:
+        build: .ide/Dockerfile
+      services:
+        - vscode
+        - docker
+      # 开发环境启动后会执行的任务
+      stages:
+        - name: ls
+          script: ls -al
+
+main:
+  push:
+    - name: vue3-pnpm-simple
+      env:
+        NODE_VERSION: "20"
+      imports: 
+        - https://cnb.cool/ibuduan/secret-repo/-/blob/main/cpu-wechat-group-qrcode.yml
+
+      docker:
+        image: node
+        build: dev/Dockerfile
+        volumes:
+          - /root/.npm:copy-on-write
+
+      git:
+        enable: true
+        submodules: true
+        lfs: true
+
+      services:
+        - docker
+          
+
+      stages:
+        # 安装依赖
+        - name: install
+          jobs:
+            - name: dependencies
+              image: node:20
+              script:
+                - echo "安装pnpm和项目依赖..."
+                - npm install -g pnpm
+                - pnpm install --frozen-lockfile
+              cache:
+                paths:
+                  - node_modules/
+                  - ~/.pnpm-store
+
+        # 代码检查和构建
+        - name: build
+          depends_on: [install]
+          jobs:
+            - name: lint-and-build
+              image: node:20
+              script:
+                - npm install -g pnpm
+                - echo "开始构建..."
+                - pnpm run build
+                - echo "构建完成"
+              artifacts:
+                paths:
+                  - dist/
+                expire_in: 1 day
+
+        # 部署到EdgeOne Pages
+        - name: deploy
+          depends_on: [build]
+          jobs:
+            - name: deploy-edgeone
+              image: tencentcom/deploy-eopages:latest
+              script: |
+                edgeone pages deploy ./dist -n cpu-wechat-group -t $EDGEONE_API_TOKEN
+              only:
+                - main
+
+      retry: 3
+      allowFailure: false
+
