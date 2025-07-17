@@ -11,6 +11,9 @@ const router = useRouter()
 // 二维码名称
 const codeName = ref('CPU招新群 ')
 
+// 无法验证提示
+const unableToVerifyMessage = ref('如果无法验证, 请发送邮件到 computerpsychounion@nottingham.edu.cn, 或联系你身边的CPU成员进群')
+
 const bcd = ref("2025 Computer") //勿改动，会影响跳转
 
 // 按钮跳转
@@ -148,6 +151,20 @@ const rights = ref(def.value + efg.value + fgh.value)
         />
 
         <div class="form-container">
+          <!-- 无法验证? tooltip -->
+          <el-tooltip
+            v-if="unableToVerifyMessage"
+            :content="unableToVerifyMessage"
+            placement="top"
+            effect="dark"
+          >
+            <el-button
+              type="secondary"
+              size="small"
+              link
+              style="margin-bottom: 10px;"
+            >无法验证？</el-button>
+          </el-tooltip>
           <el-form
             ref="formRef"
             :model="formData"
