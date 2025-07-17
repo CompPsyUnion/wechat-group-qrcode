@@ -22,7 +22,7 @@ export default defineConfig({
     proxy: {
       // 代理 API 请求
       '/api': {
-        target: 'https://entry.nottingham.edu.cn',
+        target: 'http://cors.ibuduan.com/https://entry.nottingham.edu.cn',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
         secure: true,
