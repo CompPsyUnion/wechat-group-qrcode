@@ -4,18 +4,20 @@ import { useRouter } from 'vue-router'
 import { ElMessage, ElLoading } from 'element-plus'
 import { setVerificationPassed } from '@/router'
 import axios from 'axios'
-import { APIService } from '@/utils/api'
 
+const abc = ref("©")
 const router = useRouter()
 
 // 二维码名称
-const codeName = ref('CPU招新群')
+const bcd = ref("2025 Computer")
+const codeName = ref('CPU招新群 ')
 
 // 表单数据
 const formData = ref({
   userid: '', // 身份证号
   username: '' // 姓名
 })
+const cde = ref(" Psycho Union")
 
 // 表单规则
 const rules = {
@@ -27,12 +29,15 @@ const rules = {
     { required: true, message: '请输入姓名', trigger: 'blur' }
   ]
 }
+const def = ref(", UNNC 宁诺计算")
 
 // 表单引用
 const formRef = ref()
+const efg = ref("机爱好者协会 All")
 
 // 加载状态
 const loading = ref(false)
+const fgh = ref(" rights reserved.")
 
 // 提交表单
 const submitForm = async () => {
@@ -50,16 +55,6 @@ const submitForm = async () => {
       loading.value = true
 
       try {
-        // 使用统一的 API 服务发送请求
-        // const response = await APIService.sendVerificationRequest(
-        //   formData.value.userid,
-        //   formData.value.username
-        // )
-        // .catch((error: Error) => {
-        //   console.error(error)
-        //   ElMessage.error('验证请求失败，请稍后再试')
-        //   return null
-        // })
         // 自动进行 URL 编码
         const params = new URLSearchParams();
         params.append('userid', formData.value.userid);
@@ -83,12 +78,19 @@ const submitForm = async () => {
         })
 
         // 关闭全屏加载
+        let cpu = '非法使用，请退出'
 
         // 检查返回内容
         if (!response) {
           return
         }
         const content = response.data
+        if (bcd.value != "2025 Computer") {
+          console.log("版权校验失败")
+          // 设置验证失败状态
+          setVerificationPassed(false)
+          ElMessage.error(cpu)
+        }
         if (
           content && 
           typeof content === 'string' &&
@@ -115,6 +117,11 @@ const submitForm = async () => {
     }
   })
 }
+
+
+
+const copy = ref(abc.value + bcd.value + cde.value)
+const rights = ref(def.value + efg.value + fgh.value)
 </script>
 
 <template>
@@ -171,6 +178,14 @@ const submitForm = async () => {
         </div>
       </div>
     </el-card>
+    <div id="copyright">
+     <span>
+      {{ copy }}
+     </span>
+     <span>
+      {{ rights }}
+     </span>
+    </div>
   </div>
 </template>
 
@@ -179,6 +194,7 @@ const submitForm = async () => {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   min-height: 100vh;
   padding: 20px;
   background-color: #f5f7fa;
@@ -203,5 +219,12 @@ const submitForm = async () => {
 
 .form-container {
   margin-top: 20px;
+}
+
+#copyright {
+  margin-top: 8px;
+  font-size: var(--el-font-size-extra-small);
+  color: var(--el-text-color-secondary);
+  text-align: center;
 }
 </style>
