@@ -8,14 +8,18 @@ import axios from 'axios'
 const abc = ref("©")
 const router = useRouter()
 
+// --------------------------------------------
+// ！！需要修改的地方！！
 // 二维码名称
 const codeName = ref('CPU招新群 ')
-
 // 无法验证提示
 const unableToVerifyMessage = ref('如果无法验证, 请发送邮件到 computerpsychounion@nottingham.edu.cn, 或联系你身边的CPU成员进群')
+// --------------------------------------------
 
 const bcd = ref("2025 Computer") //勿改动，会影响跳转
 
+// --------------------------------------------
+// 以下内容勿改动
 // 按钮跳转
 const openExternalLink = () => {
   window.open('https://cnb.cool/ibuduan/cpu/wechat-group-qrcode', '_blank')
