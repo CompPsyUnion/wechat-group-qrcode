@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage, ElLoading } from 'element-plus'
 import { setVerificationPassed } from '@/router'
+import axios from 'axios'
 import { APIService } from '@/utils/api'
 
 const router = useRouter()
@@ -50,15 +51,35 @@ const submitForm = async () => {
 
       try {
         // 使用统一的 API 服务发送请求
-        const response = await APIService.sendVerificationRequest(
-          formData.value.userid,
-          formData.value.username
-        )
-        .catch((error: Error) => {
+        // const response = await APIService.sendVerificationRequest(
+        //   formData.value.userid,
+        //   formData.value.username
+        // )
+        // .catch((error: Error) => {
+        //   console.error(error)
+        //   ElMessage.error('验证请求失败，请稍后再试')
+        //   return null
+        // })
+        // 自动进行 URL 编码
+        const params = new URLSearchParams();
+        params.append('userid', formData.value.userid);
+        params.append('username', formData.value.username);
+
+        const response = await axios.post(
+          'http://cors.ibuduan.com/entry.nottingham.edu.cn/result.php',
+          params,
+          {
+            headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Origin': 'http://entry.nottingham.edu.cn',
+            },
+          }
+        ).catch((error: Error) => {
           console.error(error)
           ElMessage.error('验证请求失败，请稍后再试')
-          return null
         })
+
+        // 关闭全屏加载
 
         // 检查返回内容
         if (!response) {
