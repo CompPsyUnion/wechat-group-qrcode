@@ -10,7 +10,7 @@ export class APIService {
     params.append('username', username)
 
     // 确保URL路径正确
-    const url = '/api/result.php'
+    const url = 'http://cors.ibuduan.com/entry.nottingham.edu.cn/result.php'
     try {
       const response = await fetch(url, {
         method: 'POST',
