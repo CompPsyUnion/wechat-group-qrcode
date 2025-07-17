@@ -143,7 +143,7 @@ const rights = ref(def.value + efg.value + fgh.value)
       <div class="content">
         <el-alert
           title="请验证身份"
-          :description="'系统将根据您的身份证号和姓名前往entry.nottingham.edu.cn查询录取状态，不会在后台保留您的个人信息。验证通过后将展示' + codeName + '的二维码。'"
+          :description="'系统将根据您的身份证号和姓名前往entry.nottingham.edu.cn查询录取状态，不会在后台保留您的个人信息(纯前端应用，代码已开源)。验证通过后将展示' + codeName + '的二维码。'"
           :closable="true"
         />
 
