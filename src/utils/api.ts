@@ -1,7 +1,5 @@
 // API 工具函数
 export class APIService {
-  private static isDevelopment = import.meta.env.DEV
-
   /**
    * 发送验证请求
    * 直接使用fetch发送请求
@@ -11,10 +9,7 @@ export class APIService {
     params.append('userid', userid)
     params.append('username', username)
 
-    const url = this.isDevelopment 
-      ? '/api/result.php' 
-      : 'https://entry.nottingham.edu.cn/result.php'
-
+    const url = '/api/result.php'
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -24,11 +19,11 @@ export class APIService {
         body: params,
         mode: 'cors' // 允许跨域请求
       })
-      
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
-      
+
       return await response.text()
     } catch (error) {
       console.error('验证请求失败:', error)

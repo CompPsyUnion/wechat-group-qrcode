@@ -7,6 +7,9 @@ import { APIService } from '@/utils/api'
 
 const router = useRouter()
 
+// 二维码名称
+const codeName = ref('CPU招新群')
+
 // 表单数据
 const formData = ref({
   userid: '', // 身份证号
@@ -61,7 +64,7 @@ const submitForm = async () => {
         if (!response) {
           return
         }
-        
+
         const content = response
 
         if (
@@ -98,17 +101,15 @@ const submitForm = async () => {
     <el-card class="verify-card">
       <template #header>
         <div class="card-header">
-          <h2>宁波诺丁汉大学录取验证</h2>
+          <h3>二维码获取验证</h3>
         </div>
       </template>
 
       <div class="content">
         <el-alert
-          title="请输入您的身份证号和姓名进行录取验证"
-          type="info"
-          description="系统将验证您的录取状态，如果您已被录取，将自动跳转到验证成功页面。"
-          show-icon
-          :closable="false"
+          title="请验证身份"
+          :description="'系统将根据您的身份证号和姓名前往entry.nottingham.edu.cn查询录取状态，不会在后台保留您的个人信息。验证通过后将展示' + codeName + '的二维码。'"
+          :closable="true"
         />
 
         <div class="form-container">
