@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage, ElLoading } from 'element-plus'
 import { setVerificationPassed } from '@/router'
-import axios from 'axios'
+import { APIService } from '@/utils/api'
 
 const router = useRouter()
 
@@ -46,22 +46,12 @@ const submitForm = async () => {
       loading.value = true
 
       try {
-        // 创建表单数据
-        const params = new URLSearchParams()
-        params.append('userid', formData.value.userid)
-        params.append('username', formData.value.username)
-
-        // 发送请求 - 使用代理路径避免 CORS 问题
-        const response = await axios.post(
-          '/api/result.php',
-          params,
-          {
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            }
-          }
+        // 使用统一的 API 服务发送请求
+        const response = await APIService.sendVerificationRequest(
+          formData.value.userid,
+          formData.value.username
         )
-        .catch((error) => {
+        .catch((error: Error) => {
           console.error(error)
           ElMessage.error('验证请求失败，请稍后再试')
           return null
@@ -72,7 +62,7 @@ const submitForm = async () => {
           return
         }
         
-        const content = response.data
+        const content = response
 
         if (
           typeof content === 'string' &&
