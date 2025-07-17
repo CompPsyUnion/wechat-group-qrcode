@@ -16,15 +16,17 @@ export class APIService {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': '*/*',
+          'Accept-Encoding': 'gzip, deflate, br, zstd',
+          'Accept-Language': 'zh-CN,zh;q=0.9',
           'Origin': 'https://entry.nottingham.edu.cn',
           'Host': 'entry.nottingham.edu.cn',
           'Pragma': 'no-cache',
-          'Referer': 'https://entry.nottingham.edu.cn/',
           'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1'
         },
         body: params,
         mode: 'cors', // 允许跨域请求
-        credentials: 'include' // 包含凭证，如cookies
+        credentials: 'include' // 包含凭据
       })
 
       if (!response.ok) {
