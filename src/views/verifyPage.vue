@@ -9,8 +9,14 @@ const abc = ref("©")
 const router = useRouter()
 
 // 二维码名称
-const bcd = ref("2025 Computer")
 const codeName = ref('CPU招新群 ')
+
+const bcd = ref("2025 Computer") //勿改动，会影响跳转
+
+// 按钮跳转
+const openExternalLink = () => {
+  window.open('https://cnb.cool/ibuduan/cpu/wechat-group-qrcode', '_blank')
+}
 
 // 表单数据
 const formData = ref({
@@ -129,7 +135,8 @@ const rights = ref(def.value + efg.value + fgh.value)
     <el-card class="verify-card">
       <template #header>
         <div class="card-header">
-          <h3>二维码获取验证</h3>
+          <el-text size="large" tag="b"> {{ codeName }}</el-text>
+          <el-text tag="b" type="primary">二维码获取验证</el-text>
         </div>
       </template>
 
@@ -179,13 +186,26 @@ const rights = ref(def.value + efg.value + fgh.value)
       </div>
     </el-card>
     <div id="copyright">
-     <span>
-      {{ copy }}
-     </span>
-     <span>
-      {{ rights }}
-     </span>
+      <div class="copyright-text">
+        <span>
+          {{ copy }}
+        </span>
+        <span>
+          {{ rights }}
+        </span>
+      </div>
+      <div class="repo-link">
+        > Open source on 
+        <el-button
+          type="primary"
+          size="small"
+          plain
+          link
+          @click="openExternalLink"
+          > CNB </el-button>
+      </div>
     </div>
+    
   </div>
 </template>
 
@@ -208,6 +228,7 @@ const rights = ref(def.value + efg.value + fgh.value)
 .card-header {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -223,7 +244,7 @@ const rights = ref(def.value + efg.value + fgh.value)
 
 #copyright {
   margin-top: 8px;
-  font-size: var(--el-font-size-extra-small);
+  font-size: var(--el-font-size-extra-small) !important;
   color: var(--el-text-color-secondary);
   text-align: center;
 }
