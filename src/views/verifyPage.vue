@@ -88,20 +88,18 @@ const submitForm = async () => {
         if (!response) {
           return
         }
-
         const content = response.data
-
         if (
           content && 
           typeof content === 'string' &&
-          (content.includes('Congratulations!') || content.includes('录取'))
+          (content.includes('Congratulations!') && content.includes('专业录取'))
         ) {
+          console.log('验证通过:', content)
           // 设置验证通过状态
           setVerificationPassed(true)
           ElMessage.success('验证成功，正在跳转...')
           // 跳转到展示页面
           router.push('/show')
- 
         } else {
           // 提示查询不到录取信息
           ElMessage.error('查询不到您的录取信息')
