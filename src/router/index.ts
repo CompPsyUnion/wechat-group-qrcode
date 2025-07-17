@@ -9,7 +9,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'verify',
-      component: () => import('@/views/verify.vue'),
+      component: () => import('@/views/verifyPage.vue'),
     },
     {
       path: '/show',

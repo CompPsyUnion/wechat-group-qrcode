@@ -51,9 +51,9 @@ const submitForm = async () => {
         params.append('userid', formData.value.userid)
         params.append('username', formData.value.username)
 
-        // 发送请求
+        // 发送请求 - 使用代理路径避免 CORS 问题
         const response = await axios.post(
-          'https://entry.nottingham.edu.cn/result.php',
+          '/api/result.php',
           params,
           {
             headers: {
@@ -64,9 +64,14 @@ const submitForm = async () => {
         .catch((error) => {
           console.error(error)
           ElMessage.error('验证请求失败，请稍后再试')
+          return null
         })
 
         // 检查返回内容
+        if (!response) {
+          return
+        }
+        
         const content = response.data
 
         if (
