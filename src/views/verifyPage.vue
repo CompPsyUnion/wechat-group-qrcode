@@ -13,7 +13,7 @@ const router = useRouter()
 // 二维码名称
 const codeName = ref('CPU招新群')
 // 无法验证提示
-const unableToVerifyMessage = ref('如果无法验证, 请发送邮件到 computerpsychounion@nottingham.edu.cn, 或联系你身边的CPU成员进群')
+const unableToVerifyMessage = ref('如果无法验证, 请发送邮件到 computerpsychounion@nottingham.edu.cn, 或关注公众号“宁诺CPU”发送你的录取通知, 或联系你身边的CPU成员进群')
 // --------------------------------------------
 
 const bcd = ref("2025 Computer") //勿改动，会影响跳转
@@ -156,19 +156,25 @@ const rights = ref(def.value + efg.value + fgh.value)
 
         <div class="form-container">
           <!-- 宁诺老登? tooltip -->
-          <el-tooltip
-            v-if="unableToVerifyMessage"
-            :content="unableToVerifyMessage"
-            placement="top"
-            effect="dark"
-          >
-            <el-button
-              type="info"
-              size="small"
-              link
-              style="margin-bottom: 10px;"
-            >宁诺老登?</el-button>
-          </el-tooltip>
+          <div class="form-others">
+            <el-text size="small" type="danger">
+              想进群骚扰大家的代写等商业号太多了，所以出此下策，还请各位理解。
+            </el-text>
+            <el-tooltip
+              v-if="unableToVerifyMessage"
+              :content="unableToVerifyMessage"
+              placement="top"
+              effect="dark"
+            >
+              <el-button
+                type="info"
+                size="small"
+                link
+                style="margin-bottom: 10px;"
+              >无法验证? (硕博新生/宁诺老登/校友)</el-button>
+            </el-tooltip>
+          </div>
+
           <el-form
             ref="formRef"
             :model="formData"
@@ -261,6 +267,16 @@ const rights = ref(def.value + efg.value + fgh.value)
 
 .form-container {
   margin-top: 20px;
+  .form-others {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: baseline;
+    /* 子元素居左 */
+    text-align: left;
+    align-items: flex-start;
+    margin-bottom: 4px;
+  }
 }
 
 #copyright {
