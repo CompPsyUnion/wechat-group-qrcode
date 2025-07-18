@@ -6,7 +6,10 @@ const isMobile = ref(false)
 
 // 检测是否为移动设备
 const checkDevice = () => {
-  const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera
+  const userAgent =
+    navigator.userAgent ||
+    navigator.vendor ||
+    ((window as Window & { opera?: string }).opera ?? '')
   isMobile.value = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent)
 }
 

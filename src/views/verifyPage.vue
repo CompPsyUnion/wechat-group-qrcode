@@ -11,7 +11,7 @@ const router = useRouter()
 // --------------------------------------------
 // ！！需要修改的地方！！
 // 二维码名称
-const codeName = ref('CPU招新群 ')
+const codeName = ref('CPU招新群')
 // 无法验证提示
 const unableToVerifyMessage = ref('如果无法验证, 请发送邮件到 computerpsychounion@nottingham.edu.cn, 或联系你身边的CPU成员进群')
 // --------------------------------------------
@@ -91,7 +91,7 @@ const submitForm = async () => {
         })
 
         // 关闭全屏加载
-        let cpu = '非法使用，请退出'
+        const cpu = '非法使用，请退出'
 
         // 检查返回内容
         if (!response) {
@@ -105,7 +105,7 @@ const submitForm = async () => {
           ElMessage.error(cpu)
         }
         if (
-          content && 
+          content &&
           typeof content === 'string' &&
           (content.includes('Congratulations!') && content.includes('专业录取'))
         ) {
@@ -150,12 +150,12 @@ const rights = ref(def.value + efg.value + fgh.value)
       <div class="content">
         <el-alert
           title="请验证身份"
-          :description="'系统将根据您的身份证号和姓名前往entry.nottingham.edu.cn查询录取状态，不会在后台保留您的个人信息(纯前端应用，代码已开源)。验证通过后将展示' + codeName + '的二维码。'"
+          :description="'系统将根据您的身份证号和姓名前往entry.nottingham.edu.cn查询录取状态，不会在后台保留您的个人信息(纯前端应用，代码已开源)。验证通过后将展示 ' + codeName + ' 的二维码。'"
           :closable="true"
         />
 
         <div class="form-container">
-          <!-- 无法验证? tooltip -->
+          <!-- 宁诺老登? tooltip -->
           <el-tooltip
             v-if="unableToVerifyMessage"
             :content="unableToVerifyMessage"
@@ -163,11 +163,11 @@ const rights = ref(def.value + efg.value + fgh.value)
             effect="dark"
           >
             <el-button
-              type="secondary"
+              type="info"
               size="small"
               link
               style="margin-bottom: 10px;"
-            >无法验证？</el-button>
+            >宁诺老登?</el-button>
           </el-tooltip>
           <el-form
             ref="formRef"
@@ -216,7 +216,7 @@ const rights = ref(def.value + efg.value + fgh.value)
         </span>
       </div>
       <div class="repo-link">
-        > Open source on 
+        > Open source on
         <el-button
           type="primary"
           size="small"
@@ -226,7 +226,7 @@ const rights = ref(def.value + efg.value + fgh.value)
           > CNB </el-button>
       </div>
     </div>
-    
+
   </div>
 </template>
 
