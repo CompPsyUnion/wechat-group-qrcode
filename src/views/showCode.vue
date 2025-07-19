@@ -1,64 +1,59 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from "vue";
+import { useI18n } from "vue-i18n";
 
-const qrCodeUrl = ref<string>('')
-const isMobile = ref(false)
+const { t } = useI18n();
+
+const qrCodeUrl = ref<string>("");
+const isMobile = ref(false);
 
 // 检测是否为移动设备
 const checkDevice = () => {
   const userAgent =
     navigator.userAgent ||
     navigator.vendor ||
-    ((window as Window & { opera?: string }).opera ?? '')
-  isMobile.value = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent)
-}
+    ((window as Window & { opera?: string }).opera ?? "");
+  isMobile.value = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+};
 
 // 动态导入二维码图片
 const loadQRCode = async () => {
   try {
-    const qrModule = await import('@/assets/qrcode.jpg')
-    qrCodeUrl.value = qrModule.default
+    const qrModule = await import("@/assets/qrcode.jpg");
+    qrCodeUrl.value = qrModule.default;
   } catch (error) {
-    console.error('加载二维码失败:', error)
+    console.error("加载二维码失败:", error);
   }
-}
+};
+
+// 根据设备类型计算提示文本
+const instructionText = computed(() => {
+  return isMobile.value ? t("qrcode.mobileInstruction") : t("qrcode.desktopInstruction");
+});
 
 // 组件挂载后加载二维码并检测设备
 onMounted(() => {
-  loadQRCode()
-  checkDevice()
+  loadQRCode();
+  checkDevice();
 
   // 窗口大小变化时重新检测设备类型
-  window.addEventListener('resize', checkDevice)
-})
+  window.addEventListener("resize", checkDevice);
+});
 </script>
 
 <template>
   <div class="qr-container">
     <!-- 二维码显示区域 -->
     <div class="qr-code">
-      <img
-        v-if="qrCodeUrl"
-        :src="qrCodeUrl"
-        alt="二维码"
-        class="qr-image"
-      />
+      <img v-if="qrCodeUrl" :src="qrCodeUrl" alt="二维码" class="qr-image" />
       <div v-else class="loading">
-        加载中...
+        {{ t("common.loading") }}
       </div>
     </div>
   </div>
   <p class="qr-tips">
-    <!-- 根据设备类型显示不同提示 -->
-    <template v-if="isMobile">
-      <!-- 手机提示 -->
-      请长按识别二维码，请勿截图转发
-    </template>
-    <template v-else>
-      <!-- 电脑提示 -->
-      请使用手机扫描二维码，请勿截图转发
-    </template>
-    </p>
+    {{ instructionText }}
+  </p>
 </template>
 
 <style scoped>

@@ -1,0 +1,42 @@
+{
+  "common": {
+    "switchLanguage": "Switch Language",
+    "english": "English (UK)",
+    "chinese": "中文",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  },
+  "verify": {
+    "title": "QR Code Access Verification",
+    "groupName": "CPU Recruitment Group",
+    "verifyIdentity": "Please verify your identity",
+    "description": "The system will query your admission status at entry.nottingham.edu.cn based on your ID number and name. No personal information will be retained in the backend (pure frontend application, code is open source). After verification, the QR code for {groupName} will be displayed.",
+    "warningText": "There are far too many commercial accounts bothering everyone with ghostwriting services, so we have to resort to this measure. Please do understand.",
+    "unableToVerify": "Unable to verify? (Postgraduate students/Alumni/Current students)",
+    "unableToVerifyMessage": "If you cannot verify, please send an email to computerpsychounion@nottingham.edu.cn, or follow the WeChat official account \"宁诺CPU\" and send your admission notice, or contact CPU members around you to join the group",
+    "idNumber": "ID Number",
+    "idNumberPlaceholder": "Please enter 18-digit ID number",
+    "name": "Name",
+    "namePlaceholder": "Please enter your name",
+    "submitButton": "Verify Admission Status",
+    "verifying": "Verifying...",
+    "verifySuccess": "Verification successful, redirecting...",
+    "verifyFailed": "Unable to find your admission information",
+    "requestFailed": "Verification request failed, please try again later",
+    "invalidUsage": "Unauthorised usage, please exit",
+    "openSourceText": "Open source on",
+    "copyright": "© 2025 Computer Psycho Union, UNNC 宁诺计算机爱好者协会 All rights reserved."
+  },
+  "qrcode": {
+    "mobileInstruction": "Please long press to scan the QR code, do not screenshot and forward",
+    "desktopInstruction": "Please use your mobile phone to scan the QR code, do not screenshot and forward"
+  },
+  "validation": {
+    "idRequired": "Please enter ID number",
+    "idLength": "ID number must be 18 digits",
+    "nameRequired": "Please enter name"
+  }
+}
