@@ -10,13 +10,13 @@
     "cancel": "Cancel"
   },
   "verify": {
-    "title": "QR Code Access Verification",
     "groupName": "CPU Recruitment Group",
+    "unableToVerifyMessage": "If you cannot verify, please send an email to computerpsychounion@nottingham.edu.cn, or follow the WeChat official account \"宁诺CPU\" and send your admission notice, or contact CPU members around you to join the group",
+    "title": "QR Code Access Verification",
     "verifyIdentity": "Please verify your identity",
     "description": "The system will query your admission status at entry.nottingham.edu.cn based on your ID number and name. No personal information will be retained in the backend (pure frontend application, code is open source). After verification, the QR code for {groupName} will be displayed.",
     "warningText": "There are too many commercial accounts harassing everyone with ghostwriting services, so we have to resort to this measure. Please understand.",
     "unableToVerify": "Unable to verify? (Graduate students/Alumni/Current students)",
-    "unableToVerifyMessage": "If you cannot verify, please send an email to computerpsychounion@nottingham.edu.cn, or follow the WeChat official account \"宁诺CPU\" and send your admission notice, or contact CPU members around you to join the group",
     "idNumber": "ID Number",
     "idNumberPlaceholder": "Please enter 18-digit ID number",
     "name": "Name",
