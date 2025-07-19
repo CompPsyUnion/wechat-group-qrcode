@@ -27,8 +27,7 @@
     "verifyFailed": "Unable to find your admission information",
     "requestFailed": "Verification request failed, please try again later",
     "invalidUsage": "Unauthorised usage, please exit",
-    "openSourceText": "Open source on",
-    "copyright": "© 2025 Computer Psycho Union, UNNC 宁诺计算机爱好者协会 All rights reserved."
+    "openSourceText": "Open source on"
   },
   "qrcode": {
     "mobileInstruction": "Please long press to scan the QR code, do not screenshot and forward",

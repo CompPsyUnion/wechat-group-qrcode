@@ -121,7 +121,7 @@ const submitForm = async () => {
   });
 };
 
-const copy = computed(() => t("verify.copyright"));
+const copy = ref("© 2025 Computer Psycho Union, UNNC 宁诺计算机爱好者协会 All rights reserved.");
 </script>
 
 <template>

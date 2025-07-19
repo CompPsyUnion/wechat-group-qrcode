@@ -27,8 +27,7 @@
     "verifyFailed": "查询不到您的录取信息",
     "requestFailed": "验证请求失败，请稍后再试",
     "invalidUsage": "非法使用，请退出",
-    "openSourceText": "Open source on",
-    "copyright": "© 2025 Computer Psycho Union, UNNC 宁诺计算机爱好者协会 All rights reserved."
+    "openSourceText": "Open source on"
   },
   "qrcode": {
     "mobileInstruction": "请长按识别二维码，请勿截图转发",
