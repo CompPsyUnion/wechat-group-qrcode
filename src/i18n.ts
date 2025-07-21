@@ -1,7 +1,7 @@
 import { createI18n } from "vue-i18n";
-import zhCN from "./locales/zh-CN.json";
-import enUS from "./locales/en-US.json";
-import enUK from "./locales/en-UK.json";
+import zhCN from "./locales/zh-CN.jsonc";
+import enUS from "./locales/en-US.jsonc";
+import enUK from "./locales/en-UK.jsonc";
 
 // 获取用户首选语言
 function getDefaultLocale(): string {

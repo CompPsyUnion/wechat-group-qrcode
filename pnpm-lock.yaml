@@ -57,6 +57,9 @@ importers:
       npm-run-all2:
         specifier: ^8.0.4
         version: 8.0.4
+      strip-json-comments:
+        specifier: ^5.0.2
+        version: 5.0.2
       typescript:
         specifier: ~5.8.0
         version: 5.8.3
@@ -1582,6 +1585,10 @@ packages:
   strip-json-comments@3.1.1:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
+
+  strip-json-comments@5.0.2:
+    resolution: {integrity: sha512-4X2FR3UwhNUE9G49aIsJW5hRRR3GXGTBTZRMfv568O60ojM8HcWjV/VxAxCDW3SUND33O6ZY66ZuRcdkj73q2g==}
+    engines: {node: '>=14.16'}
 
   superjson@2.2.2:
     resolution: {integrity: sha512-5JRxVqC8I8NuOUjzBbvVJAKNM8qoVuH0O77h4WInc/qC2q5IreqKxYwgkga3PfA22OayK2ikceb/B26dztPl+Q==}
@@ -3307,6 +3314,8 @@ snapshots:
   strip-final-newline@4.0.0: {}
 
   strip-json-comments@3.1.1: {}
+
+  strip-json-comments@5.0.2: {}
 
   superjson@2.2.2:
     dependencies:
